@@ -22,6 +22,6 @@ class Route:
     def RouteInfo(self):
         return self._RouteInfo
 
-    def ticket_info(self, RouteInfo: RouteInfo) -> None:
+    def route_info(self, RouteInfo: RouteInfo) -> None:
         if isinstance(RouteInfo, RouteInfo):
             self._RouteInfo = RouteInfo
