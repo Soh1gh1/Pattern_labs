@@ -25,3 +25,7 @@ class Route:
     def route_info(self, route_info: RouteInfo) -> None:
         if isinstance(route_info, RouteInfo):
             self._route_info = route_info
+
+    def route_info(self, RouteInfo: RouteInfo) -> None:
+        if isinstance(RouteInfo, RouteInfo):
+            self._RouteInfo = RouteInfo
