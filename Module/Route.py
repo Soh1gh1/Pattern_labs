@@ -17,11 +17,11 @@ class RouteInfo:
 class Route:
 
     def __init__(self) -> None:
-        self._RouteInfo = None
+        self._route_info = None
 
-    def RouteInfo(self):
-        return self._RouteInfo
+    def route_info(self):
+        return self._route_info
 
-    def ticket_info(self, RouteInfo: RouteInfo) -> None:
-        if isinstance(RouteInfo, RouteInfo):
-            self._RouteInfo = RouteInfo
+    def route_info(self, route_info: RouteInfo) -> None:
+        if isinstance(route_info, RouteInfo):
+            self._route_info = route_info

@@ -1,5 +1,5 @@
-from dataclasses import dataclass
 from Route import Route
+from dataclasses import dataclass
 
 @dataclass
 
@@ -16,36 +16,53 @@ class DriverInfo:
     date_of_birth: int
     experience: int
 
+class Driver:
+    def __init__(self):
+        self.driver_info_ = None
+
+    def driver_info(self):
+        return self.driver_info_
+
+    def driver_info(self, driver_info: DriverInfo):
+        if isinstance(driver_info, DriverInfo):
+            self.driver_info_ = driver_info
+
+
 class PassengerInfo:
     """Info about Passenger.
     Args:
     passenger_id (int): Passenger ID.
     full_name (str): Passenger full name.
-    date_of_birth (int): Passenger date of birth
+    Date_of_birth (int): Passenger date of birth
+    Routes (list): list of routes
     """
-    passenger_id: int
+    id: int
     full_name: str
     date_of_birth: int
-
-class Driver:
-    def __init__(self):
-        self.DriverInfo_ = None
-
-    def driver_info(self):
-        return self.DriverInfo_
-
-    def DriverInfo(self, driver_info: DriverInfo):
-        if isinstance(driver_info, DriverInfo):
-            self.DriverInfo_ = driver_info
+    routes: list
 
 class Passenger:
 
     def __init__(self) -> None:
-        self.PassengerInfo_ = None
+        self.passenger_info_ = None
 
-    def PassengerInfo_(self):
-        return self._PassengerInfo_
+    def passenger_info(self):
+        return self.passenger_info_
 
-    def passenger_info(self, PassengerInfo_: PassengerInfo) -> None:
-        if isinstance(PassengerInfo_, PassengerInfo):
-            self._PassengerInfo_ = PassengerInfo_
+    def passenger_info(self, passenger_info_: PassengerInfo) -> None:
+        if isinstance(passenger_info_, PassengerInfo):
+            self.passenger_info_ = passenger_info_
+
+    def add_route(self, route: Route) -> str:
+        if route.route_info.id in self.passenger_info_.routes:
+            raise ValueError(f"Already exists.")
+        else:
+            self.passenger_info_.routes.append(route.route_info.id)
+            return f"New route id: {route.route_info.id}"
+
+    def delete_route(self, route: Route) -> str:
+        if route.route_info.id in self.passenger_info_.routes:
+            self.passenger_info_.routes.remove(route.route_info.id)
+            return f"Route id: {route.route_info.id} deleted."
+        else:
+            raise ValueError(f"Route id doesn't exist")
